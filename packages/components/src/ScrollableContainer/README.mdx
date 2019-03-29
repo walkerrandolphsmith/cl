@@ -1,0 +1,67 @@
+---
+name: ScrollableContainer
+menu: Components
+---
+
+import { Fragment } from 'react';
+import { Playground, PropsTable } from '@versionone/doc-components';
+import { ScrollableContainer } from './';
+import { Button } from '../Button';
+import { SpacedGroup } from '../SpacedGroup';
+
+ScrollableContainer allow content to be vertically scrollable with a custom scrollbar
+
+<Playground>
+  <Fragment>
+    <ScrollableContainer height="100px">
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <Button>Anything</Button>
+    </ScrollableContainer>
+    <ScrollableContainer width="100px">
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <p>
+        This content is too long to fit in the available space. In order for it
+        be be accessed you must use a scrollbar.
+      </p>
+      <Button>Anything</Button>
+    </ScrollableContainer>
+  </Fragment>
+</Playground>
+
+## API
+
+<PropsTable of={ScrollableContainer} />

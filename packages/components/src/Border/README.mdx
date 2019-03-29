@@ -1,0 +1,26 @@
+---
+name: Border
+menu: Components
+---
+
+import { Playground, PropsTable } from '@versionone/doc-components';
+import { Border } from './';
+import { SpacedGroup } from '../SpacedGroup';
+
+Borders help separate content and in some cases re-enforce elevation
+
+<Playground>
+  <SpacedGroup>
+    <Border>Bordered Content!</Border>
+    <Border color="rgb(0, 82, 147)" width={5} lineStyle="dashed" radius={10}>
+      Bordered Content!
+    </Border>
+    <Border disabled width={5}>
+      Bordered Content!
+    </Border>
+  </SpacedGroup>
+</Playground>
+
+## API
+
+<PropsTable of={Border} />

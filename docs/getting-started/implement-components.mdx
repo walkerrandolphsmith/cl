@@ -1,0 +1,116 @@
+---
+name: Implement Components
+menu: Getting Started
+---
+
+## Organization
+
+- every component has a dedicated directory under `./packages/components/src`
+- includes an `index.js`; see [exports](#exports) below
+- includes a `README.mdx`
+- may include other files that are not publicly exported in the `index.js`
+
+```bash
+.
+└── packages
+    └── components
+        └── src
+            ├── index.js
+            ├── README.mdx
+            ├── otherInternalOnlyFunctionality.js
+            └── SpacedGroup.js
+```
+
+## Exports
+
+The component directory's `index.js` file export the publicly consumable portions of the component. In other words, it should never be required to import from a file within the component's directory other than the `index.js` file.
+
+> Component directories should **always** export all items as **named exports**.
+
+### Example `index.js`
+
+```js
+export { default as MainComponent } from './MainComponent';
+export { default as SecondaryComponent } from './SecondaryComponent';
+```
+
+Occassionally there will be a group of components that work together and are only relevant when used with each other (example: a list and list items). In these cases, ensure the primary component is a named export and namespace secondary components off the primary one. As an example, in the case of `List`:
+
+```js
+import List from './List';
+import Item from './Item';
+import ItemText from './ItemText';
+
+List.Item = Item;
+List.ItemText = ItemText;
+
+export { List };
+```
+
+## Styling
+
+Component styling is powered by our implementation using [fela](https://fela.js.org).
+
+- use `createComponent` function to create styled components ([see StyleProvider component](/components/StyleProvider))
+- any component containing styled components should render a `StyleProvider` as its root component ([see StyleProvider component](/components/style-provider))
+
+> See [createComponent](/components/StyleProvider#createcomponent) and [ThemeProvider](/components/StyleProvider#themeprovider-component) for more a more in-depth explanation.
+
+### Using `StyleProvider` and `createComponent` Example
+
+```js
+const Button = createComponent(
+  () => ({
+    color: 'blue',
+  }),
+  'div',
+);
+
+const SaveButton = ({ children }) => (
+  <StyleProvider>
+    <Button>{children}</Button>
+  </StyleProvider>
+);
+```
+
+## Required PropTypes
+
+- components declare appropriate `propTypes` and also comments on each `propType`
+- components declare appropraite `defaultProps`
+
+```js
+const MyComponent = ({text}) => <span>Hello {text}.</span>;
+
+MyComponent.propTypes = {
+  /** Inner text */
+  text: PropTypes.color,
+};
+MyComponent.defaultProps: {
+  text: 'world',
+};
+```
+
+## ThemeDefinition
+
+Not all components are theme-enabled; however, those that are should declare a `ThemeDefinition` and `defaultThemeValues`.
+
+> See [createComponent](/components/StyleProvider#createcomponent) and [ThemeProvider](/components/StyleProvider#themeprovider-component) for more details on how to consume the theme in your component.
+
+- components declare appropriate `themeDefintion` and also comment descriptions for each value; similar to `propTypes`, but describes the theme-able configuration properites of the component
+- components declare appropriate `defaultThemeValues`
+
+```js
+const MyComponent = () => <span>Hello World</span>;
+
+MyComponent.themeDefintion = {
+  /** Text color */
+  color: PropTypes.color,
+};
+MyComponent.defaultThemeValues: {
+  color: 'lightgray',
+};
+```
+
+## Further Reading
+
+- [Document Components](/getting-started/document-components)

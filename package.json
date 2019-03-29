@@ -1,0 +1,73 @@
+{
+  "private": true,
+  "name": "@versionone/component-library",
+  "description": "Collection of components, used by CollabNet, and accompanying documentation site.",
+  "version": "0.0.0",
+  "collaborators": [
+    "Andrew Smith <andrew@andrew.codes>"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "prestart": "concurrently \"lerna run --scope @versionone/components generate:main\" \"lerna run --scope @versionone/icons generate:main\"",
+    "start": "lerna run --scope @versionone/docs-site --stream start",
+    "verify": "concurrently \"yarn lint\" \"yarn test:e2e:cli\"",
+    "lint": "yarn lint:eslint",
+    "clean": "lerna run --stream clean",
+    "build": "lerna run --stream build",
+    "prebuild:website": "yarn prestart",
+    "build:website": "lerna run --scope @versionone/docs-site --stream build",
+    "test:e2e": "start-server-and-test start http-get://localhost:3000 test:e2e:open",
+    "test:e2e:cli": "start-server-and-test start http-get://localhost:3000 test:e2e:run:cli",
+    "test:e2e:ci": "start-server-and-test start http-get://localhost:3000 test:e2e:run:ci",
+    "test:e2e:open": "cypress open",
+    "test:e2e:run:cli": "cypress run",
+    "test:e2e:run:ci": "cypress run --record",
+    "lint:eslint": "eslint --print-config .eslintrc.json | eslint-config-prettier-check && eslint ."
+  },
+  "engines": {
+    "node": "^10.15.1",
+    "yarn": "^1.13.0"
+  },
+  "workspaces": [
+    "build/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@versionone/babel-plugin-react-docgen": "*",
+    "@versionone/theme-definition-handler": "*",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-react-fela-display-name": "^1.1.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.20",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "cypress": "^3.1.5",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-cypress": "^2.1.2",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "lerna": "^3.6.0",
+    "node-fetch": "^2.3.0",
+    "prettier": "^1.15.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.1",
+    "react-docgen-deprecation-handler": "^1.0.1",
+    "react-dom": "^16.6.1",
+    "shelljs": "^0.8.3",
+    "start-server-and-test": "^1.7.11",
+    "typescript": "^3.1.6",
+    "webpack": "^4.27.1"
+  }
+}

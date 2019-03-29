@@ -1,0 +1,51 @@
+---
+name: Focusable
+menu: Components
+---
+
+import { Component, createRef } from 'react';
+import { Playground, PropsTable } from '@versionone/doc-components';
+import { SpacedGroup } from '../SpacedGroup';
+import { createComponent, StyleProvider } from '../StyleProvider';
+import { Focusable } from './';
+
+Provide managed focus state to components.
+
+## Focus State Tracking
+
+<Playground>
+  {() => {
+    const StyledInput = createComponent(
+      ({ focused }) => ({
+        backgroundColor: focused ? 'lightblue' : 'white',
+      }),
+      'input',
+      ['onBlur', 'onFocus', 'type'],
+    );
+    class TextInput extends Component {
+      render() {
+        const { focused } = this.props;
+        return (
+          <Focusable focused={focused}>
+            {({ focused, bind, ref }) => {
+              return <StyledInput {...bind} focused={focused} innerRef={ref} />;
+            }}
+          </Focusable>
+        );
+      }
+    }
+    return (
+      <StyleProvider>
+        <SpacedGroup direction="vertical">
+          <TextInput focused />
+          <TextInput />
+          <TextInput />
+        </SpacedGroup>
+      </StyleProvider>
+    );
+  }}
+</Playground>
+
+## API
+
+<PropsTable of={Focusable} />

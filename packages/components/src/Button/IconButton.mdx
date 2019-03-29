@@ -1,0 +1,44 @@
+---
+name: Icon Buttons
+menu: Components
+---
+
+import { Playground, PropsTable } from '@versionone/doc-components';
+import { IconButton } from './';
+import { AssetIcon } from '@versionone/icons';
+import { SpacedGroup } from './../SpacedGroup';
+
+`IconButton`s are buttons that contain only a single `Icon`.
+
+<Playground>
+  <SpacedGroup direction="vertical">
+    <SpacedGroup>
+      <IconButton icon={AssetIcon} title="asset" />
+      <IconButton icon={AssetIcon} title="asset" type="primary" />
+      <IconButton icon={AssetIcon} title="asset" type="secondary" />
+      <IconButton icon={AssetIcon} title="asset" disabled />
+    </SpacedGroup>
+    <SpacedGroup>
+      <IconButton icon={AssetIcon} title="asset" size={24} />
+      <IconButton icon={AssetIcon} title="asset" type="primary" size={24} />
+      <IconButton icon={AssetIcon} title="asset" type="secondary" size={24} />
+      <IconButton icon={AssetIcon} title="asset" disabled size={24} />
+    </SpacedGroup>
+    <SpacedGroup>
+      <IconButton icon={AssetIcon} title="asset" size={42} />
+      <IconButton icon={AssetIcon} title="asset" type="primary" size={42} />
+      <IconButton icon={AssetIcon} title="asset" type="secondary" size={42} />
+      <IconButton icon={AssetIcon} title="asset" disabled size={42} />
+    </SpacedGroup>
+  </SpacedGroup>
+</Playground>
+
+## Analytics Tracking
+
+<Playground>
+  <IconButton data-trackingid="close" icon={AssetIcon} />
+</Playground>
+
+## API
+
+<PropsTable of={IconButton} />

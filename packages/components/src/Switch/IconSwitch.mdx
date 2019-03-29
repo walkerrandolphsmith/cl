@@ -1,0 +1,101 @@
+---
+name: Icon Switch
+menu: Components
+---
+
+import { CheckIcon, CloseIcon } from '@versionone/icons';
+import { Playground, PropsTable } from '@versionone/doc-components';
+import { FormField } from '../FormField';
+import { Label } from '../Label';
+import { SpacedGroup } from '../SpacedGroup';
+import { IconSwitch } from './';
+import { palette } from './../palette';
+
+This Switch is used to toggle between two mutually exclusive options and is visually represented one of the two following ways:
+
+1. Two distinct icons
+2. An icon with two different backgrounds
+
+## Basics
+
+<Playground>
+  <SpacedGroup direction="vertical">
+    <SpacedGroup xs={2} center>
+      <Label>Not Checked</Label>
+      <IconSwitch
+        checkedIcon={<CheckIcon color={palette.gunmetal} />}
+        uncheckedIcon={<CloseIcon />}
+      />
+    </SpacedGroup>
+    <SpacedGroup xs={2} center>
+      <Label>Checked</Label>
+      <IconSwitch
+        checkedIcon={<CheckIcon color={palette.gunmetal} />}
+        uncheckedIcon={<CloseIcon />}
+        checked
+      />
+    </SpacedGroup>
+    <SpacedGroup xs={2} center>
+      <Label>Disabled</Label>
+      <IconSwitch
+        checkedIcon={<CheckIcon color={palette.gunmetal} />}
+        uncheckedIcon={<CloseIcon />}
+        disabled
+      />
+    </SpacedGroup>
+  </SpacedGroup>
+</Playground>
+
+## Stateful
+
+<Playground>
+  {() => {
+    class StateManager extends React.Component {
+      constructor(props, context) {
+        super(props, context);
+        this.state = {
+          isChecked: false,
+        };
+        this.toggle = this.toggle.bind(this);
+      }
+      toggle() {
+        this.setState({ isChecked: !this.state.isChecked });
+      }
+      render() {
+        return (
+          <SpacedGroup direction="vertical">
+            <IconSwitch
+              checkedIcon={<CheckIcon color={palette.gunmetal} />}
+              uncheckedIcon={<CloseIcon color={palette.dove} />}
+              checked={this.state.isChecked}
+              onClick={this.toggle}
+            />
+          </SpacedGroup>
+        );
+      }
+    }
+    return <StateManager />;
+  }}
+</Playground>
+
+## Analytics Tracking
+
+```jsx
+<IconSwitch
+  data-trackingid="confirm-manuel-action"
+  checkedIcon={<CheckIcon color={palette.gunmetal} />}
+  uncheckedIcon={<CloseIcon color={palette.dove} />}
+/>
+```
+
+<Playground>
+  <IconSwitch
+    data-trackingid="confirm-manuel-action"
+    checkedIcon={<CheckIcon color={palette.gunmetal} />}
+    uncheckedIcon={<CloseIcon color={palette.dove} />}
+  />
+</Playground>
+
+## API
+
+<PropsTable of={IconSwitch} />

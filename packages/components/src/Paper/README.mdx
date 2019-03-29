@@ -1,0 +1,26 @@
+---
+name: Paper
+menu: Components
+---
+
+import { Playground, PropsTable } from '@versionone/doc-components';
+import { Paper } from './';
+import { SpacedGroup } from '../SpacedGroup';
+
+The physical properties of paper are translated to the screen.
+Great for creating depth to the application with the use of shadows.
+
+<Playground>
+  <SpacedGroup direction="vertical" xs={16}>
+    <Paper>
+      <SpacedGroup xs={24}>
+        <span>Content</span>
+      </SpacedGroup>
+    </Paper>
+    <Paper square>square paper</Paper>
+  </SpacedGroup>
+</Playground>
+
+## API
+
+<PropsTable of={Paper} />

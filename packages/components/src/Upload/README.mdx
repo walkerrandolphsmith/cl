@@ -1,0 +1,40 @@
+---
+name: Upload
+menu: Components
+---
+
+import { Playground, PropsTable } from '@versionone/doc-components';
+import { Upload } from './';
+import { FormField } from '../FormField';
+import { Label } from '../Label';
+import { SpacedGroup } from '../SpacedGroup';
+import { WithBreakpoint } from '../WithBreakpoint';
+import { Lozenge } from '../Lozenge';
+
+Great for allowing users to upload one or more files and showing the progress of uploads.
+
+<Playground>
+  <SpacedGroup>
+    <Upload variant="button" />
+    <Upload variant="button" disabled />
+    <Upload variant="dropzone" />
+    <Upload variant="dropzone" disabled />
+    <Upload
+      variant="dropzone"
+      primaryText="Click or drag a file in upload area"
+      secondaryText="File size is limited to 4MB"
+      onChange={(evt, files) => console.log(files)}
+    />
+    <Upload
+      variant="dropzone"
+      primaryText="Select many files"
+      secondaryText="Only jpeg and pngs please"
+      multiple
+      onChange={(evt, files) => console.log(files)}
+    />
+  </SpacedGroup>
+</Playground>
+
+## API
+
+<PropsTable of={Upload} />

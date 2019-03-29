@@ -1,0 +1,1 @@
+export { EventBoundary } from './EventBoundary';
